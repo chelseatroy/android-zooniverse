@@ -10,4 +10,5 @@ import dagger.Module;
         library = true
 )
 public class ProjectsModule {
+
 }
