@@ -15,9 +15,7 @@ import android.view.MenuItem;
 
 import com.zooniverse.android.android_zooniverse.R;
 
-public class ProjectListActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-
+public class ProjectListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,4 +98,6 @@ public class ProjectListActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }

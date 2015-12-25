@@ -4,6 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class ServiceResult implements Parcelable{
+    public ServiceResult() {
+    }
+
     private boolean successful;
     private Object payload;
 

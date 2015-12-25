@@ -4,7 +4,7 @@ import dagger.Module;
 
 @Module(
         injects = {
-                //whitelisted classes
+                ProjectsRequestGenerator.class
         },
         complete = false,
         library = true
