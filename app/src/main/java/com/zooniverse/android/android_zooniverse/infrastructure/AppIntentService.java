@@ -6,6 +6,7 @@ import android.support.v4.content.LocalBroadcastManager;
 
 public class AppIntentService extends IntentService{
     public static final String CALL_GENERATOR = "apiintentservice.CALL_GENERATOR";
+    public static final String RESULT = "apiintentservice.RESULT";
 
     private CallGenerator callGenerator;
 
@@ -20,17 +21,12 @@ public class AppIntentService extends IntentService{
 
         LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(this);
 
-        Object result = callGenerator.makeCall();
+        ServiceResult result = callGenerator.makeCall();
 
         Intent resultIntent = new Intent();
         resultIntent.setAction(actionName);
-        //add the success or failure category?
-        //hopefully we can get result in a tuple
-//        resultIntent.putExtra(AppBroadcastReceiver.PAYLOAD, result);
+        resultIntent.putExtra(RESULT, result);
 
         localBroadcastManager.sendBroadcast(resultIntent);
-
-
-
     }
 }
