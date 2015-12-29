@@ -3,6 +3,7 @@ package com.zooniverse.android.android_zooniverse.projects;
 import android.os.Parcel;
 
 import com.zooniverse.android.android_zooniverse.infrastructure.AppBroadcastReceiver;
+import com.zooniverse.android.android_zooniverse.infrastructure.OnResultListPresenter;
 
 import dagger.Module;
 import dagger.Provides;
@@ -28,6 +29,11 @@ public class ProjectsModule {
     @Provides
     ProjectsRequestGenerator projectsRequestGenerator() {
         return new ProjectsRequestGenerator(Parcel.obtain());
+    }
+
+    @Provides
+    OnResultListPresenter onResultListPresenter() {
+        return new OnResultListPresenter();
     }
 
 }

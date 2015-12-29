@@ -21,7 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_project_list" />
+    <include layout="@layout/fragment_container"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

@@ -22,6 +22,7 @@ import com.zooniverse.android.android_zooniverse.infrastructure.AppBroadcastRece
 import com.zooniverse.android.android_zooniverse.infrastructure.AppIntentService;
 import com.zooniverse.android.android_zooniverse.infrastructure.BroadcastResponder;
 import com.zooniverse.android.android_zooniverse.infrastructure.GraphProvider;
+import com.zooniverse.android.android_zooniverse.infrastructure.OnResultListPresenter;
 
 import javax.inject.Inject;
 
@@ -61,6 +62,11 @@ public class ProjectListActivity extends AppCompatActivity implements Navigation
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.fragment_container, new ProjectListFragment())
+                .commit();
     }
 
     @Override
