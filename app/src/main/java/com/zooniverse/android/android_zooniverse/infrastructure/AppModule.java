@@ -66,6 +66,6 @@ public class AppModule {
 
     @Provides
     String baseUrl() {
-        return "localhost:8080";
+        return "http://10.0.2.2:8080";
     }
 }

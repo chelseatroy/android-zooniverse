@@ -16,11 +16,11 @@ public class ProjectsResponse {
         this.projects = projects;
     }
 
-    private class Project {
-        @JsonProperty(value = "display_name")
-        private String displayName;
+    public static class Project {
         @JsonProperty(value = "description")
         private String description;
+        @JsonProperty(value = "display_name")
+        private String displayName;
         @JsonProperty(value = "classifications_count")
         private int classificationsCount;
 
