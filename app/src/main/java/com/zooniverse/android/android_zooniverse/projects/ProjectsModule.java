@@ -12,6 +12,7 @@ import dagger.Provides;
         injects = {
                 ProjectsRequestGenerator.class,
                 ProjectListActivity.class,
+                ProjectListFragment.class,
         },
         complete = false,
         library = true

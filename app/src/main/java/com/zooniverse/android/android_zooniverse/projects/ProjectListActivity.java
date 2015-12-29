@@ -26,8 +26,8 @@ import com.zooniverse.android.android_zooniverse.infrastructure.OnResultListPres
 
 import javax.inject.Inject;
 
-public class ProjectListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, BroadcastResponder {
-    private static final String GET_PROJECTS_LIST = "ProjectsListActivity.GET_PROJECTS_LIST";
+public class ProjectListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    public static final String GET_PROJECTS_LIST = "ProjectsListActivity.GET_PROJECTS_LIST";
 
     @Inject
     AppBroadcastReceiver appBroadcastReceiver;
@@ -130,10 +130,6 @@ public class ProjectListActivity extends AppCompatActivity implements Navigation
     protected void onResume() {
         super.onResume();
 
-        appBroadcastReceiver.register(this);
-        LocalBroadcastManager instance = LocalBroadcastManager.getInstance(this);
-        instance.registerReceiver(appBroadcastReceiver, new IntentFilter(GET_PROJECTS_LIST));
-
         Intent intent = new Intent(this, AppIntentService.class);
         intent.setAction(GET_PROJECTS_LIST);
         intent.putExtra(AppIntentService.CALL_GENERATOR, projectsRequestGenerator);
@@ -147,13 +143,4 @@ public class ProjectListActivity extends AppCompatActivity implements Navigation
         appBroadcastReceiver.unregister();
     }
 
-    @Override
-    public void onSuccess(String action, Object info) {
-        Toast.makeText(this, "CALL SUCCESSFUL", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onFailure(String action, Object info) {
-        Toast.makeText(this, "CALL FAILFUL", Toast.LENGTH_LONG).show();
-    }
 }
