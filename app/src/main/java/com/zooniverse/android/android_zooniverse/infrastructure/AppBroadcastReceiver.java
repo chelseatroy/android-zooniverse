@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-public class AppBroadcastReceiver extends BroadcastReceiver{
+public class AppBroadcastReceiver extends BroadcastReceiver {
     private BroadcastResponder responder;
 
     @Override
@@ -23,5 +23,9 @@ public class AppBroadcastReceiver extends BroadcastReceiver{
 
     public void register(BroadcastResponder responder) {
         this.responder = responder;
+    }
+
+    public void unregister() {
+        this.responder = null;
     }
 }

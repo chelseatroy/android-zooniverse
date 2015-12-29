@@ -1,10 +1,12 @@
 package com.zooniverse.android.android_zooniverse.projects;
 
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,13 +14,32 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.zooniverse.android.android_zooniverse.R;
+import com.zooniverse.android.android_zooniverse.infrastructure.AppBroadcastReceiver;
+import com.zooniverse.android.android_zooniverse.infrastructure.AppIntentService;
+import com.zooniverse.android.android_zooniverse.infrastructure.BroadcastResponder;
+import com.zooniverse.android.android_zooniverse.infrastructure.GraphProvider;
 
-public class ProjectListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import javax.inject.Inject;
+
+public class ProjectListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, BroadcastResponder {
+    private static final String GET_PROJECTS_LIST = "ProjectsListActivity.GET_PROJECTS_LIST";
+
+    @Inject
+    AppBroadcastReceiver appBroadcastReceiver;
+
+    @Inject
+    ProjectsRequestGenerator projectsRequestGenerator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        GraphProvider.getInstance().getGraph().inject(this);
+
         setContentView(R.layout.activity_project_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -99,5 +120,34 @@ public class ProjectListActivity extends AppCompatActivity implements Navigation
         return true;
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        appBroadcastReceiver.register(this);
+        LocalBroadcastManager instance = LocalBroadcastManager.getInstance(this);
+        instance.registerReceiver(appBroadcastReceiver, new IntentFilter(GET_PROJECTS_LIST));
+
+        Intent intent = new Intent(this, AppIntentService.class);
+        intent.setAction(GET_PROJECTS_LIST);
+        intent.putExtra(AppIntentService.CALL_GENERATOR, projectsRequestGenerator);
+        startService(intent);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        appBroadcastReceiver.unregister();
+    }
+
+    @Override
+    public void onSuccess(String action, Object info) {
+        Toast.makeText(this, "CALL SUCCESSFUL", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onFailure(String action, Object info) {
+        Toast.makeText(this, "CALL FAILFUL", Toast.LENGTH_LONG).show();
+    }
 }

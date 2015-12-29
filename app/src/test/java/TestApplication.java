@@ -1,5 +1,6 @@
 import com.zooniverse.android.android_zooniverse.TestAppModule;
 import com.zooniverse.android.android_zooniverse.infrastructure.AppModule;
+import com.zooniverse.android.android_zooniverse.ZooniverseApplication;
 
 import java.util.ArrayList;
 import java.util.List;

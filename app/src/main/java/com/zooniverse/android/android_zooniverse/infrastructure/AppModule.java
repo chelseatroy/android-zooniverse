@@ -5,7 +5,7 @@ import android.content.Context;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.zooniverse.android.android_zooniverse.R;
+import com.zooniverse.android.android_zooniverse.ZooniverseApplication;
 import com.zooniverse.android.android_zooniverse.projects.ProjectsModule;
 
 import javax.inject.Singleton;
@@ -21,30 +21,41 @@ import retrofit.converter.JacksonConverter;
                 ProjectsModule.class,
         },
         injects = {
-                //whitelisted classes
         },
         complete = false,
         library = true
 )
 public class AppModule {
-    private final Context context;
+    private final ZooniverseApplication application;
 
-    public AppModule(final Context context) {
-        this.context = context;
+    public AppModule(ZooniverseApplication application) {
+        this.application = application;
     }
 
     @Provides
     @Singleton
-    RestAdapter.Builder provideRestAdapterBuilder(Converter converter, String url) {
+    ZooniverseApplication application() {
+        return this.application;
+    }
+
+    @Provides
+    @Singleton
+    Context applicationContext() {
+        return this.application;
+    }
+
+    @Provides
+    @Singleton
+    RestAdapter restAdapter(Converter converter, String url) {
         RestAdapter.Builder builder = new RestAdapter.Builder();
         builder.setConverter(converter);
         builder.setEndpoint(url);
         builder.setLogLevel(RestAdapter.LogLevel.FULL);
-        return builder;
+        return builder.build();
     }
 
     @Provides
-    Converter providesConverter() {
+    Converter converter() {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
@@ -54,7 +65,7 @@ public class AppModule {
     }
 
     @Provides
-    String providesBaseUrl() {
+    String baseUrl() {
         return "localhost:8080";
     }
 }
