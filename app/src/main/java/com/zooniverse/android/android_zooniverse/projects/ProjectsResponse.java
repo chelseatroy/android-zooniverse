@@ -2,17 +2,17 @@ package com.zooniverse.android.android_zooniverse.projects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class ProjectsResponse {
     @JsonProperty(value = "projects")
-    private List<Project> projects;
+    private ArrayList<Project> projects;
 
-    public List<Project> getProjects() {
+    public ArrayList<Project> getProjects() {
         return projects;
     }
 
-    public void setProjects(List<Project> projects) {
+    public void setProjects(ArrayList<Project> projects) {
         this.projects = projects;
     }
 

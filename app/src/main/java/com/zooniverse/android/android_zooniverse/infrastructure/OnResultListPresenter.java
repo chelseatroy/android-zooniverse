@@ -6,11 +6,6 @@ import android.view.View;
 import java.util.ArrayList;
 
 public class OnResultListPresenter {
-
-    public OnResultListPresenter() {
-        GraphProvider.getInstance().getGraph().inject(this);
-    }
-
     public void presentOnFailureList(View progressBar, View listView, View errorView, View emptyListView) {
             progressBar.setVisibility(View.GONE);
             listView.setVisibility(View.GONE);

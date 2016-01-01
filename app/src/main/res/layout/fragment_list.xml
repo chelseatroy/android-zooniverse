@@ -1,13 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
+        android:id="@+id/random_progress_bar"
         android:layout_width="match_parent"
-        android:text="HELLO MOM"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="60sp"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:text="PROGRESS BAR" />
+
+    <TextView
+        android:id="@+id/error_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ERROR" />
+
+    <TextView
+        android:id="@+id/empty_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EMPTY PEOPLE" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

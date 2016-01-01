@@ -1,6 +1,8 @@
 package com.zooniverse.android.android_zooniverse.projects;
 
+import android.content.Context;
 import android.os.Parcel;
+import android.support.v7.widget.LinearLayoutManager;
 
 import com.zooniverse.android.android_zooniverse.infrastructure.AppBroadcastReceiver;
 import com.zooniverse.android.android_zooniverse.infrastructure.OnResultListPresenter;
@@ -37,4 +39,13 @@ public class ProjectsModule {
         return new OnResultListPresenter();
     }
 
+    @Provides
+    LinearLayoutManager linearLayoutManager(Context context) {
+        return new LinearLayoutManager(context);
+    }
+
+    @Provides
+    ProjectListAdapter projectListAdapter() {
+        return new ProjectListAdapter();
+    }
 }
