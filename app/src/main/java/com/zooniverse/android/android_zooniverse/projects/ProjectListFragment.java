@@ -75,16 +75,12 @@ public class ProjectListFragment extends Fragment implements BroadcastResponder{
         onResultListPresenter.presentOnSuccessList(
                 projectListAdapter,
                 projectList,
-                getView().findViewById(R.id.random_progress_bar),
-                getView().findViewById(android.R.id.list),
-                getView().findViewById(R.id.error_view),
-                getView().findViewById(R.id.empty_list_view)
+                getView()
         );
-        Toast.makeText(getActivity(), "CALL SUCCESSFUL", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onFailure(String action, Object info) {
-        Toast.makeText(getActivity(), "CALL FAILFUL", Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "CALL FAILED", Toast.LENGTH_LONG).show();
     }
 }
