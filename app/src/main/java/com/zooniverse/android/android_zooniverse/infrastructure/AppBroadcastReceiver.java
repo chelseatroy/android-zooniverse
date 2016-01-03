@@ -28,4 +28,8 @@ public class AppBroadcastReceiver extends BroadcastReceiver {
     public void unregister() {
         this.responder = null;
     }
+
+    public BroadcastResponder getResponder() {
+        return responder;
+    }
 }
