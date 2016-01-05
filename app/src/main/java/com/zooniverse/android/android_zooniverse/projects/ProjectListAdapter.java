@@ -1,6 +1,5 @@
 package com.zooniverse.android.android_zooniverse.projects;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +14,6 @@ import java.util.List;
 
 public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.ProjectViewHolder> implements AppListAdapter {
     private List<ProjectsResponse.Project> projectList;
-
-    private Context context;
 
     @Override
     public ProjectViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
