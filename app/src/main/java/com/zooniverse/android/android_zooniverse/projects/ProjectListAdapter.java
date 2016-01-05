@@ -26,7 +26,6 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.
 
     @Override
     public void onBindViewHolder(ProjectViewHolder holder, int position) {
-//        GraphProvider.getInstance().getGraph().inject(this);
         final ProjectsResponse.Project project = getItemAtPosition(position);
 
         holder.projectTitle.setText(project.getDisplayName());

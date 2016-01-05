@@ -1,12 +1,10 @@
 package com.zooniverse.android.android_zooniverse.projects;
 
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,23 +13,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.zooniverse.android.android_zooniverse.R;
-import com.zooniverse.android.android_zooniverse.infrastructure.AppBroadcastReceiver;
 import com.zooniverse.android.android_zooniverse.infrastructure.AppIntentService;
-import com.zooniverse.android.android_zooniverse.infrastructure.BroadcastResponder;
 import com.zooniverse.android.android_zooniverse.infrastructure.GraphProvider;
-import com.zooniverse.android.android_zooniverse.infrastructure.OnResultListPresenter;
 
 import javax.inject.Inject;
 
 public class ProjectListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     public static final String GET_PROJECTS_LIST = "ProjectsListActivity.GET_PROJECTS_LIST";
-
-    @Inject
-    AppBroadcastReceiver appBroadcastReceiver;
-
     @Inject
     ProjectsRequestGenerator projectsRequestGenerator;
 
@@ -139,8 +129,6 @@ public class ProjectListActivity extends AppCompatActivity implements Navigation
     @Override
     protected void onPause() {
         super.onPause();
-
-        appBroadcastReceiver.unregister();
     }
 
 }
