@@ -8,6 +8,7 @@ import static org.mockito.Mockito.mock;
 @Module(
         injects = {
                 ProjectListActivityTest.class,
+                ProjectListAdapterTest.class,
         },
         library = true,
         overrides = true,
