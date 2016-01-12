@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.zooniverse.android.android_zooniverse.R;
 import com.zooniverse.android.android_zooniverse.infrastructure.AppBroadcastReceiver;
@@ -81,6 +80,6 @@ public class ProjectListFragment extends Fragment implements BroadcastResponder{
 
     @Override
     public void onFailure(String action, Object info) {
-        Toast.makeText(getActivity(), "CALL FAILED", Toast.LENGTH_LONG).show();
+        onResultListPresenter.presentOnFailureList(getView());
     }
 }

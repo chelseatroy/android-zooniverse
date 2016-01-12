@@ -2,7 +2,13 @@ package com.zooniverse.android.android_zooniverse;
 
 import com.zooniverse.android.android_zooniverse.projects.TestProjectsModule;
 
+import org.mockito.Mock;
+
 import dagger.Module;
+import dagger.Provides;
+import retrofit.RestAdapter;
+
+import static org.mockito.MockitoAnnotations.initMocks;
 
 @Module(
         includes = {
@@ -16,5 +22,15 @@ import dagger.Module;
         complete = false
 )
 public class TestAppModule {
-    public TestAppModule() {}
+    public TestAppModule() {
+        initMocks(this);
+    }
+
+    @Mock
+    RestAdapter mockRestAdapter;
+
+    @Provides
+    RestAdapter mockRestAdapter() {
+        return mockRestAdapter;
+    }
 }

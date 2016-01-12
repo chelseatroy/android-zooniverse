@@ -1,11 +1,11 @@
-import com.zooniverse.android.android_zooniverse.TestAppModule;
+package com.zooniverse.android.android_zooniverse;
+
 import com.zooniverse.android.android_zooniverse.infrastructure.AppModule;
-import com.zooniverse.android.android_zooniverse.ZooniverseApplication;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestApplication extends ZooniverseApplication {
+public class TestZooniverseApplication extends ZooniverseApplication {
     @Override
     protected List<Object> getModules() {
 

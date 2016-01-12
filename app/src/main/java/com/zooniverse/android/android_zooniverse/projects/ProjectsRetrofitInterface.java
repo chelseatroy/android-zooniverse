@@ -4,6 +4,6 @@ import retrofit.http.GET;
 
 public interface ProjectsRetrofitInterface {
     @GET("/projects")
-    ProjectsResponse getProjects();
+    ProjectsResponse getProjects() throws Exception;
 }
 

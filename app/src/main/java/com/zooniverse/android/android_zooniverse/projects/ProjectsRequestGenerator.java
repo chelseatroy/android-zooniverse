@@ -18,7 +18,6 @@ public class ProjectsRequestGenerator implements CallGenerator, Parcelable {
     @Override
     public ServiceResult makeCall() {
         GraphProvider.getInstance().getGraph().inject(this);
-
         ServiceResult apiResult = new ServiceResult();
         ProjectsRetrofitInterface projectsRetrofitInterface = restAdapter.create(ProjectsRetrofitInterface.class);
 

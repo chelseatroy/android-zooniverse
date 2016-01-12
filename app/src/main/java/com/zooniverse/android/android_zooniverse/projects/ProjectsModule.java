@@ -12,9 +12,9 @@ import dagger.Provides;
 
 @Module(
         injects = {
-                ProjectsRequestGenerator.class,
                 ProjectListActivity.class,
                 ProjectListFragment.class,
+                ProjectsRequestGenerator.class,
         },
         complete = false,
         library = true
