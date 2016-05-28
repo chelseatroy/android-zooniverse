@@ -66,6 +66,6 @@ public class AppModule {
 
     @Provides
     String baseUrl() {
-        return "http://10.0.2.2:8080";
+        return "https://panoptes-staging.zooniverse.org/api";
     }
 }
